@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class ass1 {
 
-    // 1️⃣ Append two strings
+   
     static String append(String str1, String str2) {
         char[] result = new char[str1.length() + str2.length()];
         for (int i = 0; i < str1.length(); i++)
@@ -12,7 +12,7 @@ public class ass1 {
         return new String(result);
     }
 
-    // 2️⃣ Count words in string
+   
     static int countWords(String str) {
         int count = 0;
         boolean inWord = false;
@@ -27,8 +27,7 @@ public class ass1 {
         return count;
     }
 
-    // 3️⃣ Replace character
-    static String replaceChar(String str, char oldChar, char newChar) {
+       static String replaceChar(String str, char oldChar, char newChar) {
         char[] arr = new char[str.length()];
         for (int i = 0; i < str.length(); i++) {
             arr[i] = (str.charAt(i) == oldChar) ? newChar : str.charAt(i);
@@ -36,8 +35,7 @@ public class ass1 {
         return new String(arr);
     }
 
-    // 4️⃣ Palindrome check
-    static boolean isPalindrome(String str) {
+      static boolean isPalindrome(String str) {
         int left = 0, right = str.length() - 1;
         while (left < right) {
             if (str.charAt(left) != str.charAt(right))
@@ -48,7 +46,7 @@ public class ass1 {
         return true;
     }
 
-    // 5️⃣ Splice string (remove part)
+   
     static String splice(String str, int start, int end) {
         char[] result = new char[str.length() - (end - start)];
         int index = 0;
@@ -59,7 +57,7 @@ public class ass1 {
         return new String(result);
     }
 
-    // 6️⃣ Split string into words
+   
     static String[] split(String str) {
         int wordCount = countWords(str);
         String[] words = new String[wordCount];
@@ -80,7 +78,7 @@ public class ass1 {
         return words;
     }
 
-    // 7️⃣ Max repeating character
+ 
     static char maxRepeatingChar(String str) {
         int[] freq = new int[256];
         for (int i = 0; i < str.length(); i++)
@@ -96,7 +94,6 @@ public class ass1 {
         return res;
     }
 
-    // 8️⃣ Sort characters in string
     static String sortString(String str) {
         char[] arr = new char[str.length()];
         for (int i = 0; i < str.length(); i++)
@@ -113,15 +110,13 @@ public class ass1 {
         return new String(arr);
     }
 
-    // 9️⃣ Shift string by n
-    static String shiftString(String str, int n) {
+       static String shiftString(String str, int n) {
         char[] arr = new char[str.length()];
         for (int i = 0; i < str.length(); i++)
             arr[(i + n) % str.length()] = str.charAt(i);
         return new String(arr);
     }
 
-    // 🔟 Reverse string
     static String reverseString(String str) {
         char[] arr = new char[str.length()];
         for (int i = 0; i < str.length(); i++)
@@ -129,8 +124,7 @@ public class ass1 {
         return new String(arr);
     }
 
-    // 11️⃣ Concat (manual)
-    static String concat(String a, String b) {
+      static String concat(String a, String b) {
         char[] result = new char[a.length() + b.length()];
         for (int i = 0; i < a.length(); i++)
             result[i] = a.charAt(i);
@@ -139,8 +133,7 @@ public class ass1 {
         return new String(result);
     }
 
-    // 12️⃣ Length (manual)
-    static int findLength(String str) {
+      static int findLength(String str) {
         int len = 0;
         try {
             while (true) {
@@ -152,8 +145,7 @@ public class ass1 {
         return len;
     }
 
-    // 13️⃣ Equals (manual)
-    static boolean isEqual(String a, String b) {
+      static boolean isEqual(String a, String b) {
         if (a.length() != b.length())
             return false;
         for (int i = 0; i < a.length(); i++) {
@@ -163,8 +155,7 @@ public class ass1 {
         return true;
     }
 
-    // 14️⃣ Count vowels
-    static int countVowels(String str) {
+   static int countVowels(String str) {
         int count = 0;
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
@@ -175,7 +166,6 @@ public class ass1 {
         return count;
     }
 
-    // 15️⃣ Remove spaces
     static String removeSpaces(String str) {
         char[] arr = new char[str.length()];
         int idx = 0;
@@ -186,15 +176,14 @@ public class ass1 {
         return new String(arr, 0, idx);
     }
 
-    // ================= MAIN =================
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter a string:");
         String input = sc.nextLine();
-
+System.out.println(   "\nChoose operation (0 to Exit):\n" );
         while (true) {
             System.out.println(
-                "\nChoose operation (0 to Exit):\n" +
+             
                 "1. Append\n" +
                 "2. CountWords\n" +
                 "3. Replace\n" +
