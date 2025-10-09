@@ -1,123 +1,159 @@
-/**
- * Class - Main
- * @Description: Main class to test MyString operations
- * @Author: Rudraksh Dusad
- */
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
-        System.out.println("Enter a string:");
-        String input = sc.nextLine();
-        MyString myStr = new MyString(input);
+        MyString s = new MyString();
+        MyNumber n = new MyNumber();
 
         while (true) {
-            System.out.println("\nChoose operation (0 to Exit):");
-            System.out.println(
-                "1. Append\n2. CountWords\n3. Replace\n4. IsPalindrome\n5. Splice\n6. Split\n7. MaxRepeatingCharacter\n8. Sort\n9. Shift\n10. Reverse\n11. Concat\n12. Find Length\n13. Check Equal\n14. Count Vowels\n15. Remove Spaces\n0. Exit"
-            );
+            System.out.println("\n===== MAIN MENU =====");
+            System.out.println("1. String Operations");
+            System.out.println("2. Number Operations");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+
+            if (!sc.hasNextInt()) {
+                System.out.println("Invalid input! Enter a number.");
+                sc.nextLine();
+                continue;
+            }
 
             int choice = sc.nextInt();
             sc.nextLine();
 
-            if (choice == 0) {
-                System.out.println("Exiting...");
-                break;
-            }
-
             switch (choice) {
                 case 1:
-                    System.out.println("Enter string to append:");
-                    myStr.append(sc.nextLine());
-                    System.out.println("Result: " + myStr);
+                    while (true) {
+                        System.out.println("\n--- STRING OPERATIONS ---");
+                        System.out.println("1. Reverse String");
+                        System.out.println("2. Check Palindrome");
+                        System.out.println("3. Count Vowels");
+                        System.out.println("4. Remove Spaces");
+                        System.out.println("5. Count Words");
+                        System.out.println("6. Convert to Uppercase");
+                        System.out.println("7. Character Frequency");
+                        System.out.println("8. Go Back");
+                        System.out.print("Enter your choice: ");
+
+                        if (!sc.hasNextInt()) {
+                            System.out.println("Invalid input! Enter a number.");
+                            sc.nextLine();
+                            continue;
+                        }
+
+                        int sChoice = sc.nextInt();
+                        sc.nextLine();
+
+                        if (sChoice == 8) break;
+
+                        System.out.print("Enter a string: ");
+                        String str = sc.nextLine();
+
+                        switch (sChoice) {
+                            case 1:
+                                System.out.println("Reversed: " + s.reverse(str));
+                                break;
+                            case 2:
+                                System.out.println("Palindrome: " + s.isPalindrome(str));
+                                break;
+                            case 3:
+                                System.out.println("Vowel Count: " + s.countVowels(str));
+                                break;
+                            case 4:
+                                System.out.println("Without Spaces: " + s.removeSpaces(str));
+                                break;
+                            case 5:
+                                System.out.println("Word Count: " + s.countWords(str));
+                                break;
+                            case 6:
+                                System.out.println("Uppercase: " + s.toUpperCase(str));
+                                break;
+                            case 7:
+                                System.out.print("Enter character to count: ");
+                                char target = sc.next().charAt(0);
+                                sc.nextLine();
+                                System.out.println("Frequency: " + s.charFrequency(str, target));
+                                break;
+                            default:
+                                System.out.println("Invalid choice.");
+                        }
+                    }
                     break;
 
                 case 2:
-                    System.out.println("Word count: " + myStr.countWords());
+                    while (true) {
+                        System.out.println("\n--- NUMBER OPERATIONS ---");
+                        System.out.println("1. Check Prime");
+                        System.out.println("2. Check Armstrong");
+                        System.out.println("3. Reverse Number");
+                        System.out.println("4. Check Palindrome");
+                        System.out.println("5. Sum of Digits");
+                        System.out.println("6. Factorial");
+                        System.out.println("7. Count Digits");
+                        System.out.println("8. Print Fibonacci");
+                        System.out.println("9. Go Back");
+                        System.out.print("Enter your choice: ");
+
+                        if (!sc.hasNextInt()) {
+                            System.out.println("Invalid input! Enter a number.");
+                            sc.nextLine();
+                            continue;
+                        }
+
+                        int nChoice = sc.nextInt();
+                        sc.nextLine();
+
+                        if (nChoice == 9) break;
+
+                        System.out.print("Enter a number: ");
+                        if (!sc.hasNextInt()) {
+                            System.out.println("Invalid input! Enter a number.");
+                            sc.nextLine();
+                            continue;
+                        }
+                        int num = sc.nextInt();
+                        sc.nextLine();
+
+                        switch (nChoice) {
+                            case 1:
+                                System.out.println("Prime: " + n.isPrime(num));
+                                break;
+                            case 2:
+                                System.out.println("Armstrong: " + n.isArmstrong(num));
+                                break;
+                            case 3:
+                                System.out.println("Reversed: " + n.reverseNumber(num));
+                                break;
+                            case 4:
+                                System.out.println("Palindrome: " + n.isNumberPalindrome(num));
+                                break;
+                            case 5:
+                                System.out.println("Sum of Digits: " + n.sumOfDigits(num));
+                                break;
+                            case 6:
+                                System.out.println("Factorial: " + n.factorial(num));
+                                break;
+                            case 7:
+                                System.out.println("Digit Count: " + n.countDigits(num));
+                                break;
+                            case 8:
+                                n.printFibonacci(num);
+                                break;
+                            default:
+                                System.out.println("Invalid choice.");
+                        }
+                    }
                     break;
 
                 case 3:
-                    System.out.println("Enter old char:");
-                    char oldC = sc.nextLine().charAt(0);
-                    System.out.println("Enter new char:");
-                    char newC = sc.nextLine().charAt(0);
-                    myStr.replaceChar(oldC, newC);
-                    System.out.println("Result: " + myStr);
-                    break;
-
-                case 4:
-                    System.out.println("Palindrome? " + myStr.isPalindrome());
-                    break;
-
-                case 5:
-                    System.out.println("Enter start index:");
-                    int start = sc.nextInt();
-                    System.out.println("Enter end index:");
-                    int end = sc.nextInt();
-                    sc.nextLine();
-                    myStr.splice(start, end);
-                    System.out.println("Result: " + myStr);
-                    break;
-
-                case 6:
-                    String[] words = myStr.split();
-                    System.out.println("Words:");
-                    for (String w : words) System.out.println(w);
-                    break;
-
-                case 7:
-                    System.out.println("Max repeating: " + myStr.maxRepeatingChar());
-                    break;
-
-                case 8:
-                    myStr.sortString();
-                    System.out.println("Sorted: " + myStr);
-                    break;
-
-                case 9:
-                    System.out.println("Enter shift amount:");
-                    int n = sc.nextInt();
-                    sc.nextLine();
-                    myStr.shiftString(n);
-                    System.out.println("Shifted: " + myStr);
-                    break;
-
-                case 10:
-                    myStr.reverseString();
-                    System.out.println("Reversed: " + myStr);
-                    break;
-
-                case 11:
-                    System.out.println("Enter string to concat:");
-                    myStr.concat(sc.nextLine());
-                    System.out.println("Concatenated: " + myStr);
-                    break;
-
-                case 12:
-                    System.out.println("Length: " + myStr.findLength());
-                    break;
-
-                case 13:
-                    System.out.println("Enter string to compare:");
-                    System.out.println("Equal? " + myStr.isEqual(sc.nextLine()));
-                    break;
-
-                case 14:
-                    System.out.println("Vowels: " + myStr.countVowels());
-                    break;
-
-                case 15:
-                    myStr.removeSpaces();
-                    System.out.println("Without spaces: " + myStr);
-                    break;
+                    System.out.println("Exiting... Goodbye!");
+                    sc.close();
+                    return;
 
                 default:
-                    System.out.println("Invalid choice!");
+                    System.out.println("Invalid option, please try again.");
             }
         }
-
-        sc.close();
     }
 }

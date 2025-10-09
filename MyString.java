@@ -4,34 +4,59 @@
  * @Author: Rudraksh Dusad
  */
 public class MyString {
-    private String str;
 
-    public MyString(String str) {
-        this.str = str;
+    // 1. Reverse String
+    public String reverse(String str) {
+        char[] arr = str.toCharArray();
+        String rev = "";
+        for (int i = arr.length - 1; i >= 0; i--) {
+            rev += arr[i];
+        }
+        return rev;
     }
 
-    // Getter and Setter
-    public String get() {
-        return str;
+    // 2. Check Palindrome
+    public boolean isPalindrome(String str) {
+        int i = 0, j = str.length() - 1;
+        while (i < j) {
+            if (str.charAt(i) != str.charAt(j))
+                return false;
+            i++;
+            j--;
+        }
+        return true;
     }
 
-    public void set(String str) {
-        this.str = str;
+    // 3. Count Vowels
+    public int countVowels(String str) {
+        int count = 0;
+        str = str.toLowerCase();
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+                count++;
+        }
+        return count;
     }
 
-    // Append
-    public void append(String s) {
-        this.str = this.str + s;
+    // 4. Remove Spaces
+    public String removeSpaces(String str) {
+        String res = "";
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) != ' ')
+                res += str.charAt(i);
+        }
+        return res;
     }
 
-    // Count words
-    public int countWords() {
+    // 5. Count Words 
+    public int countWords(String str) {
         int count = 0;
         boolean inWord = false;
         for (int i = 0; i < str.length(); i++) {
             if (str.charAt(i) != ' ' && !inWord) {
-                count++;
                 inWord = true;
+                count++;
             } else if (str.charAt(i) == ' ') {
                 inWord = false;
             }
@@ -39,123 +64,25 @@ public class MyString {
         return count;
     }
 
-    // Replace character
-    public void replaceChar(char oldChar, char newChar) {
-        char[] arr = new char[str.length()];
-        for (int i = 0; i < str.length(); i++)
-            arr[i] = (str.charAt(i) == oldChar) ? newChar : str.charAt(i);
-        str = new String(arr);
-    }
-
-    // Check palindrome
-    public boolean isPalindrome() {
-        int left = 0, right = str.length() - 1;
-        while (left < right) {
-            if (str.charAt(left) != str.charAt(right))
-                return false;
-            left++;
-            right--;
-        }
-        return true;
-    }
-
-    // Splice
-    public void splice(int start, int end) {
-        StringBuilder sb = new StringBuilder();
+    // 6. Convert to Uppercase
+    public String toUpperCase(String str) {
+        String result = "";
         for (int i = 0; i < str.length(); i++) {
-            if (i < start || i >= end)
-                sb.append(str.charAt(i));
+            char ch = str.charAt(i);
+            if (ch >= 'a' && ch <= 'z')
+                ch = (char) (ch - 32);
+            result += ch;
         }
-        str = sb.toString();
+        return result;
     }
 
-    // Split
-    public String[] split() {
-        return str.trim().split("\\s+");
-    }
-
-    // Max repeating character
-    public char maxRepeatingChar() {
-        int[] freq = new int[256];
-        for (int i = 0; i < str.length(); i++)
-            freq[str.charAt(i)]++;
-        int max = 0;
-        char res = str.charAt(0);
-        for (int i = 0; i < 256; i++) {
-            if (freq[i] > max) {
-                max = freq[i];
-                res = (char) i;
-            }
-        }
-        return res;
-    }
-
-    // Sort string
-   public void sortString() {
-    char[] arr = str.toCharArray();
-    int n = arr.length;
-    
-    for (int i = 0; i < n - 1; i++) {
-        for (int j = 0; j < n - i - 1; j++) {
-            if (arr[j] > arr[j + 1]) {
-                // swap characters
-                char temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-
-    str = new String(arr);
-}
-
-
-    // Shift string
-    public void shiftString(int n) {
-        char[] arr = new char[str.length()];
-        for (int i = 0; i < str.length(); i++)
-            arr[(i + n) % str.length()] = str.charAt(i);
-        str = new String(arr);
-    }
-
-    // Reverse string
-    public void reverseString() {
-        str = new StringBuilder(str).reverse().toString();
-    }
-
-    // Concat
-    public void concat(String s) {
-        str = str + s;
-    }
-
-    // Find length
-    public int findLength() {
-        return str.length();
-    }
-
-    // Check equality
-    public boolean isEqual(String s) {
-        return str.equals(s);
-    }
-
-    // Count vowels
-    public int countVowels() {
+    // 7. Count Character Frequency 
+    public int charFrequency(String str, char target) {
         int count = 0;
         for (int i = 0; i < str.length(); i++) {
-            char c = Character.toLowerCase(str.charAt(i));
-            if (c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+            if (str.charAt(i) == target)
                 count++;
         }
         return count;
-    }
-
-    // Remove spaces
-    public void removeSpaces() {
-        str = str.replace(" ", "");
-    }
-
-    @Override
-    public String toString() {
-        return str;
     }
 }
